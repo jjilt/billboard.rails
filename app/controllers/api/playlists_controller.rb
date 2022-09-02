@@ -1,6 +1,6 @@
-class Api::PlaylistsController < ApplicationController
 
-  class Api::SubsController < ApplicationController
+
+  class Api::PlaylistsController < ApplicationController
     # controller are traffic directors for data 
     # define our backend actions, 
   
@@ -117,7 +117,7 @@ class Api::PlaylistsController < ApplicationController
   
     def update 
       @playlist = playlist.find(params[:id])
-      if @playlist.update(sub_params)
+      if @playlist.update(playlist_params)
         render json: @playlist
       else 
         render json: { errors: @playlist.errors }, status: :unprocessable_entity
