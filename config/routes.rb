@@ -31,7 +31,8 @@ Rails.application.routes.draw do
       # rails g way 
       # resources :name ofcontroller 
       # handles the main CRUD actions 
-      resources :playlists
+      resources :playlists do
+        resources :artists
   
       # to view the routes 
     # in terminal - bundle exec rails routes 
