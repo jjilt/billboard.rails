@@ -1,41 +1,22 @@
-import { useState, useEffect } from 'react';
-import PlaylistForm from './components/playlists/PlaylistForm';
-import PlaylistList from './components/playlists/PlaylistList';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/shared/home/Home';
+import About from './components/shared/about/About';
+import Artists from './components/artists/Artists';
+import Nomatch from './components/shared/Nomatch';
+import Navbar from './components/shared/Navbar';
+import Songs from './components/songs/Songs';
 
-const App = () => {
-  const [playlists, setPlaylists] = useState([])
-
-  useEffect( () => {
-    // TODO make a call to our rails server to get all items
-  }, [])
-
-  const addPlaylist = (playlist) => {
-    // TODO make api call to rails server to add an item
-    // TODO update state
-  }
-
-  const updatePlaylist = (id, playlist) => {
-    // TODO make api call to update an item
-    // TODO update state
-  }
-
-  const deletePlaylist = (id) => {
-    // TODO make api call to delete sub
-    // TODO remove it from state
-  }
-
-  return (
-    <>
-      <PlaylistForm addPlaylist={addPlaylist} />
-      <br />
-      <br />
-      <PlaylistList
-        playlists={playlists}
-        updatePlaylist={updatePlaylist}
-        deletePlaylist={deletePlaylist}
-      />
-    </>
-  );
-}
+const App = () => (
+  <>
+    <Navbar />
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/artists' element={<Artists />} />
+      <Route path='/:artistId/songs' element={<Songs />} />
+      <Route path='/*' element={<Nomatch />} />
+    </Routes>
+  </>
+)
 
 export default App;
