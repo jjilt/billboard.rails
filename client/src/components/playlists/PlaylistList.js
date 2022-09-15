@@ -1,9 +1,11 @@
 import React from 'react';
-import Playlist from './Playlist';
+import PlaylistShow from './PlaylistShow';
+
 const PlaylistList = ({ playlists, updatePlaylist, deletePlaylist }) => (
   <>
-    { playlists.map( playlist =>
-        <Playlist
+    { 
+      playlists.map( playlist =>
+        <PlaylistShow
           key={playlist.id}
           {...playlist}
           updatePlaylist={updatePlaylist}

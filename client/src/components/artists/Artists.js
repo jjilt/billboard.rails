@@ -10,7 +10,7 @@ const Artists = () => {
   const { playlistId } = useParams()
 
   useEffect( () => {
-    axios.get(`/api/playlists/${playlistId}/playlists`)
+    axios.get(`/api/playlists/${playlistId}/artists`)
       .then( res => setArtists(res.data) )
       .catch( err => console.log(err) )
   }, [])
@@ -24,21 +24,21 @@ const Artists = () => {
   const updateArtist = (id, artist) => {
     axios.put(`/api/playlists/${playlistId}/artists/${id}`, { artist })
       .then(res => {
-        const newUpdatedArtists = artists.map( t => {
-          if (t.id === id) {
+        const newUpdatedArtists = artists.map( a => {
+          if (a.id === id) {
             return res.data
           }
-          return t
+          return a
         })
-        setAtists(newUpdatedArtists)
+        setArtists(newUpdatedArtists)
       })
       .catch( err => console.log(err) )
   }
 
   const deleteArtist = (id) => {
-    axios.delete(`/api/playlists/${playlistId}/playlists/${id}`)
+    axios.delete(`/api/playlists/${playlistId}/artists/${id}`)
       .then( res => {
-        setArtists( artists.filter( t => t.id !== id ))
+        setArtists( artists.filter( a => a.id !== id ))
       })
       .catch( err => console.log(err) )
   }

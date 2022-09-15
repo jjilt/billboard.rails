@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const PlaylistForm = ({ addPlaylist }) => {
+const PlaylistForm = ({ addPlaylist, id, title, updatePlaylist, setEdit }) => {
   const [playlist, setPlaylist] = useState({ title: '' })
 
   useEffect( () => {
     if (id) {
-      setPlaylist({ id, title, })
+      setPlaylist({ title, })
     }
   }, [])
 
@@ -13,7 +13,7 @@ const PlaylistForm = ({ addPlaylist }) => {
     e.preventDefault();
     if (id) {
       updatePlaylist(id, playlist)
-      setPlaylist(false)
+      setEdit(false)
     } else {
       addPlaylist(playlist);
     }
@@ -21,16 +21,19 @@ const PlaylistForm = ({ addPlaylist }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="title"
-        placeholder="Add A Playlist"
-        required
-        value={playlist.title}
-        onChange={(e) => setPlaylist({ ...playlist, title: e.target.value })}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h3>{ id ? 'Edit' : 'Create'} Playlist</h3>
+      <form onSubmit={handleSubmit}>
+        <input 
+          name='title'
+          value={playlist.title}
+          onChange={(e) => setPlaylist({ ...playlist, title: e.target.value })}
+          required
+          placeholder='Playlist name'
+        />
+        <button type='submit'>Submit</button>
+      </form>
+    </>
   )
 }
 
