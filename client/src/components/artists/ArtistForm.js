@@ -37,7 +37,7 @@ const ArtistForm = ({ addArtist, id, title, body, setEdit, updateArtist }) => {
         {/* text */}
         <textarea
           name='body'
-          value={topic.body}
+          value={artist.body}
           onChange={(e) => setArtist({ ...artist, body: e.target.value })}
           required
         ></textarea>

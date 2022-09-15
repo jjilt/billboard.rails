@@ -20,7 +20,6 @@ class Api::ArtistsController < ApplicationController
   end
 
   def create
-    # @topic = Topic.new(topic_params)
     @artist = @playlist.artists.new(artist_params)
     if @artist.save
       render json: @artist
@@ -30,8 +29,6 @@ class Api::ArtistsController < ApplicationController
   end
 
   def update
-    # @topic = Topic.find(params[:id])
-    # @topic = @sub.topics.find(params[:id])
     if @artist.update(artist_params)
       render json: @artist
     else 
@@ -40,14 +37,11 @@ class Api::ArtistsController < ApplicationController
   end
 
   def destroy
-    # @topic = Topic.find(params[:id])
-    # @topic = @sub.topics.find(params[:id])
     @artist.destroy
     render json: { message: 'artist deleted'}
   end
 
   private 
-    # define who the parent is 
     def set_playlist
       @playlist = Playlist.find(params[:playlist_id])
     end

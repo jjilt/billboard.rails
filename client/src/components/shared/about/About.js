@@ -1,7 +1,7 @@
 
 const About = () => (
   <>
-    <h1>About Page</h1>
+    <h1>oops Nothing Here</h1>
   </>
 )
 

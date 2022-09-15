@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import ArtistForm from './ArtistForm';
+import { Link } from 'react-router-dom';
 
 const ArtistShow = ({ id, title, body, updateArtist, deleteArtist }) => {
   const [editing, setEdit] = useState(false)
 
   return (
     <>
-      <h3>{title}</h3>
-      <p>{body}</p>
       { editing ?
         <>
           <ArtistForm 
             id={id}
             title={title}
             body={body}
-            updateTrip={updateArtist}
+            updateArtist={updateArtist}
             setEdit={setEdit}
           />
           <button onClick={() => setEdit(false)}>

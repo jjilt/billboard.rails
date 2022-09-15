@@ -3,16 +3,12 @@ import PlaylistForm from './PlaylistForm';
 import { Link } from 'react-router-dom';
 
 const PlaylistShow = ({ id, title, deletePlaylist, updatePlaylist }) => {
-  // this will keep track of if we are editing
+
   const [editing, setEdit] = useState(false)
 
-  // conditional rendering - display base off of a condition
   return (
     <>
-      <h3>{title}</h3>
-      {/* conditional rendering of if I am editing show the form or if not then show the button */}
-      {
-        editing ?
+      { editing ?
         <>
           <PlaylistForm 
             updatePlaylist={updatePlaylist}
@@ -20,29 +16,33 @@ const PlaylistShow = ({ id, title, deletePlaylist, updatePlaylist }) => {
             title={title}
             setEdit={setEdit}
           />
-          <button
-            onClick={() => setEdit(false)}
-          >
+          <button onClick={() => setEdit(false)}>
             Cancel
           </button>
         </>
         :
-        <button
-          onClick={() => setEdit(true)}
-        >
+        <div>
+          <h1> {title} </h1>
+        <button onClick={() => setEdit(true)}>
             Edit
-        </button>
+            </button>
+          <button onClick={() => deletePlaylist(id)}>
+            Delete
+          </button>
+          <Link
+            to={`/${id}/artists`} //path of where its going to 
+            // id the list id
+            state={{ PlaylistTitle: title }}
+            // state only read only value to pass to the page
+          >
+            <button>Artists</button>
+          </Link>
+        </div>
       }
-      <button
-        onClick={() => deletePlaylist(id)}
-      >
-        Delete
-      </button>
-      <Link to={`/${id}/artists`}>
-        <button>Artists</button>
-      </Link>
+      <hr />
     </>
   )
 }
 
 export default PlaylistShow;
+

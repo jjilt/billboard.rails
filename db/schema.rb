@@ -24,16 +24,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_234321) do
   end
 
   create_table "playlists", force: :cascade do |t|
-    t.string "artist"
-    t.string "song"
-    t.string "genre"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "duration"
-    t.string "name"
+    t.string "title"
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
